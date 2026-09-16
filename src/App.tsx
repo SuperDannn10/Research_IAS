@@ -28,6 +28,7 @@ import "./App.css";
 
 function LoginPage({ onLogin }
 
-function App() { const [loggedIn, setLoggedIn] = useState(false); if (!loggedIn) return <LoginPage onLogin={() => setLoggedIn(true)} />; return <div className="app" />; }
+function PageHeading({ icon, title, subtitle, action }
 
+function App() { const [loggedIn,setLoggedIn]=useState(false); if(!loggedIn)return <LoginPage onLogin={()=>setLoggedIn(true)}/>; return <div className="app"><main className="content-area"><PageHeading icon={<Home size={40}/>} title="Good Day, Admin!" subtitle="Here's the summary of the system." /></main></div>; }
 export default App;
