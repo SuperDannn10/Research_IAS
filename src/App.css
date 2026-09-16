@@ -15,3 +15,5 @@ button { cursor: pointer; }
 .login-input input { width:100%; border:0; outline:0; background:transparent; font-family:"Arial Narrow",Arial,sans-serif; font-size:18px; }
 .login-button { width:100%; height:48px; border:1.5px solid #555; border-radius:9px; background:#555; color:white; display:flex; align-items:center; justify-content:center; gap:8px; font-size:23px; }
 .content-area { padding:27px 28px 42px; max-width:1120px; margin:0 auto; }
+
+.page-heading{display:flex;align-items:center;gap:15px;min-height:68px}.heading-icon{display:flex;align-items:center;justify-content:center}.heading-copy{min-width:0}.script-title{margin:0;font-size:39px;line-height:1.02}.page-heading p{margin:3px 0 0;font-family:"Arial Narrow",Arial,sans-serif;font-size:17px;color:#555}.heading-action{margin-left:auto}
