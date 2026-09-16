@@ -72,7 +72,7 @@ const initialPayments: Payment[] = [
   { studentId: "2026-005", amount: 500, originalAmount: 500, discount: 0, date: "Sept. 14, 2026", status: "Paid", reference: "PAY-0003", promissoryNote: false },
 ];
 
-const discountOptions: Discount[] = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+const discountOptions: Discount[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -322,7 +322,7 @@ function PaymentRecords({ students, payments }: { students: Student[]; payments:
 function RecordPaymentModal({ students, onClose, onSave }: { students: Student[]; onClose: () => void; onSave: (payment: Payment) => void }) {
   const [studentId, setStudentId] = useState(students[0]?.id ?? "");
   const [originalAmount, setOriginalAmount] = useState("500");
-  const [discount, setDiscount] = useState<Discount>(0);
+  const [discount, setDiscount] = useState<Discount>(10);
   const [date, setDate] = useState("Sept. 16, 2026");
   const [status, setStatus] = useState<PaymentStatus>("Paid");
   const [promissoryNote, setPromissoryNote] = useState(false);
