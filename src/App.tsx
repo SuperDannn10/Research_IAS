@@ -341,7 +341,7 @@ function RecordPaymentModal({ students, onClose, onSave }: { students: Student[]
     <label>Status<select value={status} onChange={(event) => setStatus(event.target.value as PaymentStatus)}><option>Paid</option><option>Unpaid</option></select></label>
     {status === "Paid" && <label>Payment Date<input value={date} onChange={(event) => setDate(event.target.value)} /></label>}
     <label className="check-row"><input type="checkbox" checked={promissoryNote} onChange={(event) => setPromissoryNote(event.target.checked)} /><span>Promissory Note requested</span></label>
-    {promissoryNote && <div className="requester-note"><FileText size={19} /><span>requested by</span><strong>{requester || "selected student"}</strong></div>}
+    {promissoryNote && <div className="requester-note"><FileText size={19} /><span>requested by selected student</span><strong>{requester || "selected student"}</strong></div>}
     <div className="modal-actions"><button className="cancel-button" onClick={onClose}>Cancel</button><button className="primary-button" onClick={save}><Save size={18} />Save Payment</button></div>
   </div></div>;
 }
