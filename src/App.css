@@ -3,3 +3,15 @@ button, input, select { font: inherit; }
 button { cursor: pointer; }
 .app, .login-page { min-height: 100vh; background: #eeeeeb; color: #292929; }
 .script-title, .login-script, .logo-text, .login-button { font-family: "Segoe Script", "Bradley Hand", "Brush Script MT", cursive; font-weight: 500; }
+
+.login-page { display:flex; align-items:center; justify-content:center; padding:30px; min-height:100vh; }
+.login-content { width:min(650px,100%); text-align:center; }
+.login-logo { display:flex; justify-content:center; margin-bottom:3px; }
+.login-script { margin:0; font-size:49px; line-height:1; }
+.login-main-title { margin:3px 0 7px; font-family:"SF Pro Display","Arial Narrow",Arial,sans-serif; font-size:31px; font-weight:700; }
+.login-subtitle { margin:0 0 25px; font-family:"Arial Narrow",Arial,sans-serif; font-size:17px; color:#555; }
+.login-card { width:min(420px,100%); margin:0 auto; padding:24px 30px 27px; border:1.5px solid #999; border-radius:13px; background:rgba(255,255,255,.22); }
+.login-input { height:48px; display:flex; align-items:center; gap:12px; border:1.5px solid #aaa; border-radius:9px; padding:0 13px; margin-bottom:14px; background:rgba(255,255,255,.3); }
+.login-input input { width:100%; border:0; outline:0; background:transparent; font-family:"Arial Narrow",Arial,sans-serif; font-size:18px; }
+.login-button { width:100%; height:48px; border:1.5px solid #555; border-radius:9px; background:#555; color:white; display:flex; align-items:center; justify-content:center; gap:8px; font-size:23px; }
+.content-area { padding:27px 28px 42px; max-width:1120px; margin:0 auto; }
