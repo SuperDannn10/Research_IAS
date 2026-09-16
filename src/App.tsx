@@ -214,7 +214,7 @@ function Dashboard({ students, payments }: { students: Student[]; payments: Paym
 
   return <main className="content-area">
     <PageHeading icon={<Home size={40} />} title="Good Day, Admin!" subtitle="Here's the summary of the system." />
-    <div className="summary-grid">
+    <div className="summary-grid" aria-label="Dashboard summary">
       <SummaryCard icon={<UsersRound />} label="Total Students" value={students.length} />
       <SummaryCard icon={<CheckCircle2 />} label="Paid" value={paid} tone="green" />
       <SummaryCard icon={<CircleX />} label="Unpaid" value={unpaid} tone="red" />
