@@ -335,7 +335,7 @@ function RecordPaymentModal({ students, onClose, onSave }: { students: Student[]
   };
   return <div className="modal-overlay"><div className="payment-modal"><div className="modal-header"><div><h2>Record Payment</h2><p>enter payment, discount, or promissory note details.</p></div><button aria-label="Close" onClick={onClose}><X size={24} /></button></div>
     <label>Student<select value={studentId} onChange={(event) => setStudentId(event.target.value)}>{students.map((student) => <option key={student.id} value={student.id}>{student.firstName} {student.lastName} — {student.id}</option>)}</select></label>
-    <label>Original Amount<input type="number" min="0" value={originalAmount} onChange={(event) => setOriginalAmount(event.target.value)} /></label>
+    <label>Original Amount<input type="number" min="0" step="0.01" value={originalAmount} onChange={(event) => setOriginalAmount(event.target.value)} /></label>
     <label>Discount<SelectBox value={`${discount}%`} onChange={(value) => setDiscount(Number(value.replace("%", "")) as Discount)} options={discountOptions.map((value) => `${value}%`)} /></label>
     <div className="calculation-card"><span><CircleDollarSign size={18} />total after discount</span><strong>₱{amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong><small>{discount}% discount = ₱{(Number(originalAmount || 0) * discount / 100).toLocaleString(undefined, { minimumFractionDigits: 2 })} deducted</small></div>
     <label>Status<select value={status} onChange={(event) => setStatus(event.target.value as PaymentStatus)}><option>Paid</option><option>Unpaid</option></select></label>
