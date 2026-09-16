@@ -147,7 +147,7 @@ function App() {
             {sidebarOpen ? <X size={27} strokeWidth={1.8} /> : <Menu size={27} strokeWidth={1.8} />}
           </button>
           <div className="topbar-spacer" />
-          <div className="admin-account"><UserRound size={23} strokeWidth={1.7} /><span>Welcome, Admin</span><ChevronDown size={17} /></div>
+          <div className="admin-account" role="status" aria-label="Administrator account"><UserRound size={23} strokeWidth={1.7} /><span>Welcome, Admin</span><ChevronDown size={17} /></div>
         </header>
 
         {currentPage === "dashboard" && <Dashboard students={students} payments={payments} />}
@@ -300,7 +300,7 @@ function StudentDetails({ student, payment, onBack }: { student: Student; paymen
 
 function InfoRow({ label, value, status }: { label: string; value: string; status?: PaymentStatus }) { return <div className="info-row"><span>{label}</span><b>:</b>{status ? <StatusBadge status={status} /> : <strong>{value}</strong>}</div>; }
 
-function StatusBadge({ status }: { status: PaymentStatus }) { return <span className={`payment-status ${status === "Paid" ? "status-paid" : "status-unpaid"}`}>{status}</span>; }
+function StatusBadge({ status }: { status: PaymentStatus }) { return <span className={`payment-status ${status === "Paid" ? "status-paid" : "status-unpaid"}`} aria-label={`Payment status: ${status}`}>{status}</span>; }
 
 function SelectBox({ value, onChange, options }: { value: string; onChange: (value: string) => void; options: string[] }) { return <div className="select-box"><select value={value} onChange={(event) => onChange(event.target.value)}>{options.map((option) => <option key={option}>{option}</option>)}</select><ChevronDown size={18} /></div>; }
 
