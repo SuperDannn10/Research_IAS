@@ -1,0 +1,5 @@
+* { box-sizing: border-box; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+.app, .login-page { min-height: 100vh; background: #eeeeeb; color: #292929; }
+.script-title, .login-script, .logo-text, .login-button { font-family: "Segoe Script", "Bradley Hand", "Brush Script MT", cursive; font-weight: 500; }
