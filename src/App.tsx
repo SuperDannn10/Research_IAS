@@ -139,7 +139,7 @@ function App() {
         </nav>
       </aside>
 
-      {sidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)} />}
+      {sidebarOpen && <div className="sidebar-overlay" role="button" tabIndex={0} aria-label="Close navigation" onClick={() => setSidebarOpen(false)} onKeyDown={(event) => { if (event.key === "Escape" || event.key === "Enter") setSidebarOpen(false); }} />}
 
       <div className="main-wrapper">
         <header className="topbar">
