@@ -1,26 +1,203 @@
+:root {
+  --paper: #eeeeeb;
+  --paper-2: #e5e5e1;
+  --ink: #292929;
+  --muted: #666;
+  --line: #9d9d99;
+  --green: #c9dfcf;
+  --green-text: #315c3c;
+  --red: #e4baba;
+  --red-text: #843838;
+}
+
 * { box-sizing: border-box; }
 button, input, select { font: inherit; }
-.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 button { cursor: pointer; }
-.app, .login-page { min-height: 100vh; background: #eeeeeb; color: #292929; }
-.script-title, .login-script, .logo-text, .login-button { font-family: "Segoe Script", "Bradley Hand", "Brush Script MT", cursive; font-weight: 500; }
 
-.login-page { display:flex; align-items:center; justify-content:center; padding:30px; min-height:100vh; }
-.login-content { width:min(650px,100%); text-align:center; }
-.login-logo { display:flex; justify-content:center; margin-bottom:3px; }
-.login-script { margin:0; font-size:49px; line-height:1; }
-.login-main-title { margin:3px 0 7px; font-family:"SF Pro Display","Arial Narrow",Arial,sans-serif; font-size:31px; font-weight:700; }
-.login-subtitle { margin:0 0 25px; font-family:"Arial Narrow",Arial,sans-serif; font-size:17px; color:#555; }
-.login-card { width:min(420px,100%); margin:0 auto; padding:24px 30px 27px; border:1.5px solid #999; border-radius:13px; background:rgba(255,255,255,.22); }
-.login-input { height:48px; display:flex; align-items:center; gap:12px; border:1.5px solid #aaa; border-radius:9px; padding:0 13px; margin-bottom:14px; background:rgba(255,255,255,.3); }
-.login-input input { width:100%; border:0; outline:0; background:transparent; font-family:"Arial Narrow",Arial,sans-serif; font-size:18px; }
-.login-button { width:100%; height:48px; border:1.5px solid #555; border-radius:9px; background:#555; color:white; display:flex; align-items:center; justify-content:center; gap:8px; font-size:23px; }
-.content-area { padding:27px 28px 42px; max-width:1120px; margin:0 auto; }
+.app, .login-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,.72), transparent 31%), var(--paper);
+  color: var(--ink);
+}
 
-.page-heading{display:flex;align-items:center;gap:15px;min-height:68px}.heading-icon{display:flex;align-items:center;justify-content:center}.heading-copy{min-width:0}.script-title{margin:0;font-size:39px;line-height:1.02}.page-heading p{margin:3px 0 0;font-family:"Arial Narrow",Arial,sans-serif;font-size:17px;color:#555}.heading-action{margin-left:auto}
+.app::before, .login-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image: repeating-linear-gradient(0deg, rgba(0,0,0,.025) 0, rgba(0,0,0,.025) 1px, transparent 1px, transparent 4px);
+  z-index: 20;
+}
 
-.sidebar{width:205px;min-width:205px;min-height:100vh;position:fixed;left:-225px;top:0;bottom:0;z-index:60;background:rgba(239,239,236,.96);border-right:1.5px solid #9d9d99;transition:left .22s ease}.sidebar.open{left:0}.sidebar-header{height:68px;display:flex;align-items:center;gap:10px;padding:0 18px;border-bottom:1.5px solid #9d9d99}.logo-text{font-size:23px}.sidebar-menu{padding:10px}.menu-item{width:100%;min-height:43px;display:flex;align-items:center;gap:12px;padding:0 12px;border:0;border-radius:12px;background:transparent;color:#343434;text-align:left;margin-bottom:5px;font-family:"Arial Narrow",Arial,sans-serif;font-size:16px}.menu-icon{display:flex;width:24px;align-items:center;justify-content:center}.menu-item svg{width:23px;height:23px;stroke-width:1.7}.menu-item:hover,.menu-item.active{background:rgba(0,0,0,.09)}.main-wrapper{min-height:100vh;width:100%}.topbar{height:68px;display:flex;align-items:center;border-bottom:1.5px solid #9d9d99;padding:0 18px}.hamburger{width:43px;height:43px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid #999;border-radius:9px;background:rgba(255,255,255,.22)}
+/* the script face mirrors the handwritten title in the reference; system fallbacks keep it offline */
+.script-title, .login-script, .logo-text, .login-button {
+  font-family: "Segoe Script", "Bradley Hand", "Brush Script MT", cursive;
+  font-weight: 500;
+}
 
-.payment-status{display:inline-flex;align-items:center;justify-content:center;min-width:61px;height:30px;padding:0 12px;border-radius:18px;border:1px solid rgba(0,0,0,.12);font-family:"Arial Narrow",Arial,sans-serif;font-size:15px}.status-paid{background:#c9dfcf;color:#315c3c;border-color:#9fbea7}.status-unpaid{background:#e4baba;color:#843838;border-color:#c99a9a}
+.sidebar {
+  width: 205px;
+  min-width: 205px;
+  min-height: 100vh;
+  position: fixed;
+  left: -225px;
+  top: 0;
+  bottom: 0;
+  z-index: 60;
+  background: rgba(239,239,236,.96);
+  border-right: 1.5px solid var(--line);
+  transition: left .22s ease;
+}
+.sidebar.open { left: 0; }
+.sidebar-header { height: 68px; display: flex; align-items: center; gap: 10px; padding: 0 18px; border-bottom: 1.5px solid var(--line); }
+.logo-box { display: flex; align-items: center; justify-content: center; }
+.logo-text { font-size: 23px; }
+.sidebar-menu { padding: 10px 10px; }
+.menu-item { width: 100%; min-height: 43px; display: flex; align-items: center; gap: 12px; padding: 0 12px; border: 0; border-radius: 12px; background: transparent; color: #343434; text-align: left; margin-bottom: 5px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 16px; }
+.menu-icon { display: flex; width: 24px; align-items: center; justify-content: center; }
+.menu-item svg { width: 23px; height: 23px; stroke-width: 1.7; }
+.menu-item:hover, .menu-item.active { background: rgba(0,0,0,.09); }
+.close-sidebar { display: none; margin-left: auto; border: 0; background: transparent; padding: 3px; }
 
-@media (max-width:800px){.close-sidebar{display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent}.content-area{padding:22px 16px 35px}.summary-grid{grid-template-columns:1fr}.add-form{grid-template-columns:1fr;gap:13px}}
+.main-wrapper { min-height: 100vh; width: 100%; }
+.topbar { height: 68px; display: flex; align-items: center; border-bottom: 1.5px solid var(--line); padding: 0 18px; }
+.hamburger { width: 43px; height: 43px; display: inline-flex; align-items: center; justify-content: center; border: 1.5px solid #999; border-radius: 9px; background: rgba(255,255,255,.22); }
+.topbar-spacer { flex: 1; }
+.admin-account { display: flex; align-items: center; gap: 8px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 16px; }
+
+.content-area { padding: 27px 28px 42px; max-width: 1120px; margin: 0 auto; }
+.page-heading { display: flex; align-items: center; gap: 15px; min-height: 68px; }
+.heading-icon { display: flex; align-items: center; justify-content: center; }
+.heading-copy { min-width: 0; }
+.script-title { margin: 0; font-size: 39px; line-height: 1.02; }
+.page-heading p { margin: 3px 0 0; font-family: "Arial Narrow", Arial, sans-serif; font-size: 17px; color: #555; }
+.heading-action { margin-left: auto; }
+
+.primary-button, .cancel-button, .view-button, .back-button, .upload-button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; border-radius: 9px; min-height: 41px; padding: 0 15px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 16px; border: 1.5px solid #777; }
+.primary-button { background: #555; color: white; border-color: #555; }
+.primary-button:hover { background: #404040; }
+.cancel-button, .view-button, .back-button, .upload-button { background: rgba(255,255,255,.22); color: var(--ink); }
+.view-button { min-height: 34px; padding: 0 12px; }
+
+.summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 17px 0 24px; }
+.summary-card { min-height: 93px; border: 1.5px solid #aaa; border-radius: 11px; display: flex; align-items: center; gap: 17px; padding: 14px 17px; background: rgba(255,255,255,.2); }
+.summary-icon { display: flex; }
+.summary-icon svg { width: 35px; height: 35px; stroke-width: 1.6; }
+.summary-card span { display: block; font-family: "Arial Narrow", Arial, sans-serif; font-size: 16px; }
+.summary-card strong { display: block; margin-top: 2px; font-family: "SF Pro Display", "Arial Narrow", Arial, sans-serif; font-size: 37px; font-weight: 600; }
+.summary-green { background: rgba(201,223,207,.48); }
+.summary-green .summary-icon { color: var(--green-text); }
+.summary-red { background: rgba(228,186,186,.48); }
+.summary-red .summary-icon { color: var(--red-text); }
+
+.section-title { display: flex; align-items: center; gap: 10px; margin: 0 0 11px; }
+.section-title h2 { margin: 0; font-family: "SF Pro Display", "Arial Narrow", Arial, sans-serif; font-size: 21px; font-weight: 600; }
+.view-all { margin-left: auto; font-family: "Arial Narrow", Arial, sans-serif; font-size: 15px; }
+.table-card { border: 1.5px solid #aaa; border-radius: 11px; overflow: hidden; background: rgba(255,255,255,.12); }
+table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+th { font-family: "SF Pro Display", "Arial Narrow", Arial, sans-serif; font-size: 15px; font-weight: 600; }
+td { font-family: "Arial Narrow", Arial, sans-serif; font-size: 16px; }
+th, td { height: 47px; padding: 0 14px; text-align: left; border-right: 1px solid #aaa; border-bottom: 1px solid #aaa; }
+th:last-child, td:last-child { border-right: 0; }
+tbody tr:last-child td { border-bottom: 0; }
+
+.payment-status { display: inline-flex; align-items: center; justify-content: center; min-width: 61px; height: 30px; padding: 0 12px; border-radius: 18px; border: 1px solid rgba(0,0,0,.12); font-family: "Arial Narrow", Arial, sans-serif; font-size: 15px; }
+.status-paid { background: var(--green); color: var(--green-text); }
+.status-unpaid { background: var(--red); color: var(--red-text); }
+
+.directory-toolbar, .payment-toolbar { display: flex; align-items: center; gap: 12px; margin: 18px 0; }
+.search-box { height: 43px; flex: 1; display: flex; align-items: center; gap: 10px; border: 1.5px solid #aaa; border-radius: 9px; padding: 0 13px; background: rgba(255,255,255,.3); }
+.search-box input { width: 100%; border: 0; outline: 0; background: transparent; font-family: "Arial Narrow", Arial, sans-serif; font-size: 16px; }
+.select-box { position: relative; width: 150px; height: 43px; border: 1.5px solid #aaa; border-radius: 9px; background: rgba(255,255,255,.3); display: flex; align-items: center; }
+.select-box select { appearance: none; width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0 35px 0 13px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 16px; }
+.select-box svg { position: absolute; right: 11px; pointer-events: none; }
+.payment-search { max-width: 390px; }
+.record-button { margin-left: auto; }
+
+.add-form { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; margin-top: 25px; }
+.form-column { display: flex; flex-direction: column; gap: 13px; }
+.form-column > label, .payment-modal > label, .photo-upload > label { display: flex; flex-direction: column; gap: 5px; font-family: "SF Pro Display", "Arial Narrow", Arial, sans-serif; font-size: 15px; font-weight: 600; }
+.form-column input, .form-column select, .payment-modal input, .payment-modal select { width: 100%; height: 38px; border: 1.5px solid #aaa; border-radius: 8px; padding: 0 12px; outline: none; background: rgba(255,255,255,.3); font-family: "Arial Narrow", Arial, sans-serif; font-size: 16px; }
+.form-column input:focus, .form-column select:focus, .payment-modal input:focus, .payment-modal select:focus { border-color: #555; }
+.form-actions { display: flex; justify-content: flex-end; gap: 13px; margin-top: 20px; }
+.optional { font-weight: 400; color: #777; }
+.photo-upload-row { display: flex; align-items: center; gap: 10px; }
+.upload-button { position: relative; overflow: hidden; min-height: 38px; }
+.upload-button input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.upload-preview { width: 44px; height: 44px; border: 1px solid #999; border-radius: 7px; object-fit: cover; }
+.photo-upload small { margin-top: 5px; font-family: "Arial Narrow", Arial, sans-serif; color: #777; font-weight: 400; }
+
+.student-details { margin-top: 22px; }
+.profile-section { display: flex; gap: 27px; align-items: flex-start; }
+.profile-picture { width: 130px; height: 135px; border: 1.5px solid #aaa; border-radius: 9px; overflow: hidden; background: #ddd; display: flex; align-items: center; justify-content: center; }
+.profile-picture img { width: 100%; height: 100%; object-fit: cover; }
+.student-info { flex: 1; padding-top: 2px; }
+.info-row { display: grid; grid-template-columns: 120px 15px 1fr; align-items: center; min-height: 29px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 16px; }
+.info-row strong { font-weight: 400; }
+.payment-details-card { margin-top: 22px; border: 1.5px solid #aaa; border-radius: 11px; padding: 14px 17px; }
+.payment-card-title { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; padding-bottom: 9px; border-bottom: 1px solid #aaa; }
+.payment-card-title h2 { margin: 0; font-family: "SF Pro Display", "Arial Narrow", Arial, sans-serif; font-size: 20px; }
+.back-button { margin-top: 13px; }
+
+.payment-table-card th:nth-child(1) { width: 25%; }
+.payment-table-card th:nth-child(2) { width: 16%; }
+.payment-table-card th:nth-child(3) { width: 18%; }
+.payment-table-card th:nth-child(4) { width: 18%; }
+.payment-table-card th:nth-child(5) { width: 15%; }
+
+.modal-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.28); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.payment-modal { width: min(470px, 100%); max-height: 92vh; overflow-y: auto; border: 1.5px solid #888; border-radius: 14px; background: #ededeb; padding: 22px; box-shadow: 0 15px 40px rgba(0,0,0,.18); display: flex; flex-direction: column; gap: 15px; }
+.modal-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.modal-header h2 { margin: 0; font-family: "SF Pro Display", "Arial Narrow", Arial, sans-serif; font-size: 24px; }
+.modal-header p { margin: 4px 0 0; font-family: "Arial Narrow", Arial, sans-serif; }
+.modal-header button { border: 0; background: transparent; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px; }
+.calculation-card { border: 1.5px solid #aaa; border-radius: 9px; padding: 11px 13px; background: rgba(255,255,255,.22); }
+.calculation-card span { display: flex; align-items: center; gap: 7px; font-family: "Arial Narrow", Arial, sans-serif; }
+.calculation-card strong { display: block; margin-top: 3px; font-family: "SF Pro Display", Arial, sans-serif; font-size: 26px; }
+.calculation-card small { font-family: "Arial Narrow", Arial, sans-serif; color: #666; }
+.requester-note { display: flex; align-items: center; gap: 8px; min-height: 38px; border: 1.5px solid #aaa; border-radius: 8px; padding: 0 12px; background: rgba(255,255,255,.22); font-family: "Arial Narrow", Arial, sans-serif; }
+.requester-note span { color: #666; }
+.requester-note strong { font-weight: 600; }
+.check-row { display: flex !important; flex-direction: row !important; align-items: center; gap: 9px !important; }
+.check-row input { width: 18px !important; height: 18px !important; }
+
+.settings-card, .about-card { margin-top: 25px; border: 1.5px solid #aaa; border-radius: 11px; padding: 20px; background: rgba(255,255,255,.15); }
+.settings-card h2, .about-card h2 { margin: 0; font-family: "SF Pro Display", "Arial Narrow", Arial, sans-serif; }
+.settings-card p, .about-card p { font-family: "Arial Narrow", Arial, sans-serif; line-height: 1.55; }
+.about-card > svg { margin-bottom: 7px; }
+.about-points { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 17px; }
+.about-points span { display: flex; align-items: center; gap: 8px; border: 1px solid #aaa; border-radius: 8px; padding: 10px; font-family: "Arial Narrow", Arial, sans-serif; }
+.logout-button { margin-top: 10px; }
+
+.login-page { display: flex; align-items: center; justify-content: center; padding: 30px; position: relative; }
+.login-content { width: min(650px, 100%); text-align: center; }
+.login-logo { display: flex; justify-content: center; margin-bottom: 3px; }
+.login-script { margin: 0; font-size: 49px; line-height: 1; }
+.login-main-title { margin: 3px 0 7px; font-family: "SF Pro Display", "Arial Narrow", Arial, sans-serif; font-size: 31px; font-weight: 700; }
+.login-subtitle { margin: 0 0 25px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 17px; color: #555; }
+.login-card { width: min(420px, 100%); margin: 0 auto; padding: 24px 30px 27px; border: 1.5px solid #999; border-radius: 13px; background: rgba(255,255,255,.22); }
+.login-input { height: 48px; display: flex; align-items: center; gap: 12px; border: 1.5px solid #aaa; border-radius: 9px; padding: 0 13px; margin-bottom: 14px; background: rgba(255,255,255,.3); }
+.login-input input { width: 100%; border: 0; outline: 0; background: transparent; font-family: "Arial Narrow", Arial, sans-serif; font-size: 18px; }
+.login-button { width: 100%; height: 48px; border: 1.5px solid #555; border-radius: 9px; background: #555; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 23px; }
+
+.sidebar-overlay { position: fixed; inset: 0; z-index: 55; background: rgba(0,0,0,.25); }
+
+@media (max-width: 800px) {
+  .close-sidebar { display: inline-flex; align-items: center; justify-content: center; border: 0; background: transparent; }
+  .content-area { padding: 22px 16px 35px; }
+  .summary-grid { grid-template-columns: 1fr; }
+  .add-form { grid-template-columns: 1fr; gap: 13px; }
+  .payment-toolbar, .directory-toolbar { flex-wrap: wrap; }
+  .payment-search { max-width: none; width: 100%; flex-basis: 100%; }
+  .record-button { margin-left: 0; }
+  .table-card { overflow-x: auto; }
+  table { min-width: 700px; }
+  .profile-section { flex-direction: column; }
+  .script-title { font-size: 32px; }
+  .login-script { font-size: 38px; }
+  .login-main-title { font-size: 24px; }
+  .about-points { grid-template-columns: 1fr; }
+}
