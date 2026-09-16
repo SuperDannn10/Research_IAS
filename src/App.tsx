@@ -239,7 +239,7 @@ function StudentDirectory({ students, onAdd, onView }: { students: Student[]; on
     <PageHeading icon={<UsersRound size={42} />} title="Student Directory" subtitle="View and manage student information." action={<button className="primary-button" onClick={onAdd}><Plus size={19} /> Add Student</button>} />
     <div className="directory-toolbar" aria-label="Student directory filters"><div className="search-box"><Search size={23} /><input placeholder="Search student..." value={search} onChange={(event) => setSearch(event.target.value)} /></div><SelectBox value={grade} onChange={setGrade} options={["All Grades", "11", "12"]} /></div>
     <div className="table-card directory-table"><table><thead><tr><th>Student ID</th><th>Name</th><th>Grade/Year</th><th>Section</th><th>Status</th><th>Action</th></tr></thead><tbody>
-      {filtered.map((student) => <tr key={student.id}><td>{student.id}</td><td>{student.firstName} {student.lastName}</td><td>{student.grade}</td><td>{student.section}</td><td><StatusBadge status={student.id === "2026-002" || student.id === "2026-004" ? "Unpaid" : "Paid"} /></td><td><button className="view-button" onClick={() => onView(student)}><Eye size={17} />View</button></td></tr>)}
+      {filtered.map((student) => <tr key={student.id}><td>{student.id}</td><td>{student.firstName} {student.lastName}</td><td>{student.grade}</td><td>{student.section}</td><td><StatusBadge status={student.id === "2026-002" || student.id === "2026-004" ? "Unpaid" : "Paid"} /></td><td><button className="view-button" aria-label={`View ${student.firstName} ${student.lastName}`} onClick={() => onView(student)}><Eye size={17} />View</button></td></tr>)}
     </tbody></table></div>
   </main>;
 }
