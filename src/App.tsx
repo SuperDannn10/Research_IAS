@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useMemo, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from "react";
 import {
   ArrowLeft,
   CalendarDays,
@@ -328,6 +328,7 @@ function RecordPaymentModal({ students, onClose, onSave }: { students: Student[]
   const [promissoryNote, setPromissoryNote] = useState(false);
   const selectedStudent = students.find((student) => student.id === studentId);
   const requester = selectedStudent ? `${selectedStudent.firstName} ${selectedStudent.lastName}` : "";
+  useEffect(() => { const onKeyDown = (event: KeyboardEvent) => { if (event.key === "Escape") onClose(); }; window.addEventListener("keydown", onKeyDown); return () => window.removeEventListener("keydown", onKeyDown); }, [onClose]);
   const amount = Math.max(0, Number(originalAmount) * (1 - discount / 100));
   const save = () => {
     const reference = status === "Paid" ? `PAY-${Math.floor(1000 + Math.random() * 9000)}` : "-";
