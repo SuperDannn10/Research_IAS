@@ -1,0 +1,10 @@
+* { box-sizing: border-box; }
+:root {
+  font-family: "SF Pro Text", "Arial Narrow", Arial, sans-serif;
+  color: #292929;
+  background: #eeeeeb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+body { margin: 0; min-width: 320px; background: #eeeeeb; }
+button, input, select { font: inherit; }
