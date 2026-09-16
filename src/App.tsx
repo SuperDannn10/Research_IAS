@@ -126,7 +126,7 @@ function App() {
         <div className="sidebar-header">
           <div className="logo-box"><GraduationCap size={39} strokeWidth={1.7} /></div>
           <span className="logo-text">SDPMS</span>
-          <button className="close-sidebar" aria-label="Close sidebar" onClick={() => setSidebarOpen(false)}><X size={24} /></button>
+          <button className="close-sidebar" aria-label="Close sidebar" title="Close sidebar" onClick={() => setSidebarOpen(false)}><X size={24} /></button>
         </div>
 
         <nav className="sidebar-menu">
