@@ -220,7 +220,7 @@ function Dashboard({ students, payments }: { students: Student[]; payments: Paym
       <SummaryCard icon={<CircleX />} label="Unpaid" value={unpaid} tone="red" />
     </div>
     <div className="section-title"><CalendarDays size={27} /><h2>Recent Payments</h2><span className="view-all">View All →</span></div>
-    <div className="table-card simple-table-card"><table><thead><tr><th>Student Name</th><th>Amount</th><th>Date</th><th>Status</th></tr></thead><tbody>
+    <div className="table-card simple-table-card" aria-label="Recent payments"><table><caption className="sr-only">Recent payment transactions</caption><thead><tr><th>Student Name</th><th>Amount</th><th>Date</th><th>Status</th></tr></thead><tbody>
       {recent.map((payment) => { const student = students.find((item) => item.id === payment.studentId); if (!student) return null; return <tr key={payment.studentId}><td>{student.firstName} {student.lastName}</td><td>₱{payment.amount.toLocaleString()}</td><td>{payment.date}</td><td><StatusBadge status={payment.status} /></td></tr>; })}
     </tbody></table></div>
   </main>;
