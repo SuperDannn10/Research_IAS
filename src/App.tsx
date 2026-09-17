@@ -568,6 +568,7 @@ function App() {
 
         {showAddStudent && (
           <AddStudent
+            students={students}
             onCancel={() =>
               setShowAddStudent(false)
             }
@@ -635,6 +636,7 @@ function App() {
       {showRecordPayment && (
         <RecordPaymentModal
           students={students}
+          payments={payments}
           onClose={() =>
             setShowRecordPayment(false)
           }
@@ -2546,6 +2548,12 @@ function RecordPaymentModal({
                   true,
                 )
               }
+              onKeyDown={(event) => {
+                if (event.key === "Enter" && suggestions[0]) {
+                  event.preventDefault();
+                  selectStudent(suggestions[0]);
+                }
+              }}
               autoComplete="off"
             />
           </div>
