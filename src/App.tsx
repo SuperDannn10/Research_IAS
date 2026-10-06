@@ -307,6 +307,7 @@ function App() {
   const handleLogin = () => {
     setLoggedIn(true);
     localStorage.setItem("loggedIn", "true");
+    localStorage.setItem("currentPage", "dashboard");
     setSidebarOpen(false);
     setCurrentPage("dashboard");
   };
