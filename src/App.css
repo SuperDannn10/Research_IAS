@@ -979,10 +979,17 @@ tbody tr:last-child td {
   border-bottom: 0;
 }
 
+.student-suggestion {
+  transition:
+    background-color 140ms ease,
+    transform 140ms ease;
+}
+
 .student-suggestion:hover,
 .student-suggestion:focus-visible {
   background: #eaf3ff;
   outline: none;
+  transform: translateX(2px);
 }
 
 .student-suggestion img {
