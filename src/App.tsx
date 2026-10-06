@@ -301,6 +301,7 @@ function App() {
     setSelectedStudent(null);
     setShowAddStudent(false);
     setShowRecordPayment(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleLogin = () => {
