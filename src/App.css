@@ -1106,6 +1106,13 @@ tbody tr:last-child td {
   margin-top: 10px;
 }
 
+.back-button:focus-visible,
+.primary-button:focus-visible,
+.login-button:focus-visible {
+  outline: 3px solid rgba(42, 110, 177, 0.35);
+  outline-offset: 2px;
+}
+
 .login-page {
   display: flex;
   align-items: center;
