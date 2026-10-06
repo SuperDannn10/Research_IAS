@@ -1666,13 +1666,15 @@ function StudentDetails({
   onBack: () => void;
   onDelete: (studentId: string) => void;
 }) {
+  const studentName = `${student.firstName} ${student.lastName}`;
+
   return (
     <main className="content-area">
 
       <PageHeading
         icon={<UserRound size={42} />}
         title="Student Details"
-        subtitle="View complete student information."
+        subtitle={`View complete information for ${studentName}.`}
       />
 
       <div className="student-details">
