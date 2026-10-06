@@ -337,6 +337,9 @@ function App() {
     );
 
     setSelectedStudent(null);
+    setShowAddStudent(false);
+    setShowRecordPayment(false);
+    setSidebarOpen(false);
     setCurrentPage("student-directory");
   };
 
