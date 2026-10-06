@@ -688,31 +688,41 @@ tbody tr:last-child td {
   margin-top: 13px;
 }
 
-/* Payment Information table */
-.payment-table-card th:nth-child(1) {
-  width: 25%;
+/* Payment Information / Payment Records table */
+.payment-table-card table {
+  width: 100%;
+  table-layout: fixed;
 }
 
-.payment-table-card th:nth-child(2) {
-  width: 16%;
+/* Balanced column spacing — total is exactly 100% */
+.payment-table-card th:nth-child(1),
+.payment-table-card td:nth-child(1) {
+  width: 22%;
 }
 
-.payment-table-card th:nth-child(3) {
-  width: 18%;
+.payment-table-card th:nth-child(2),
+.payment-table-card td:nth-child(2) {
+  width: 14%;
 }
 
-.payment-table-card th:nth-child(4) {
-  width: 18%;
-}
-
-.payment-table-card th:nth-child(5) {
+.payment-table-card th:nth-child(3),
+.payment-table-card td:nth-child(3) {
   width: 15%;
 }
 
-/* Payment Records table - fixed spacing for Discount and Promissory Note */
+.payment-table-card th:nth-child(4),
+.payment-table-card td:nth-child(4) {
+  width: 12%;
+}
+
+.payment-table-card th:nth-child(5),
+.payment-table-card td:nth-child(5) {
+  width: 14%;
+}
+
 .payment-table-card th:nth-child(6),
 .payment-table-card td:nth-child(6) {
-  width: 8%;
+  width: 9%;
   white-space: nowrap;
 }
 
@@ -725,9 +735,16 @@ tbody tr:last-child td {
   line-height: 1.3;
 }
 
+/* Keep the table contents from looking cramped */
+.payment-table-card th,
+.payment-table-card td {
+  vertical-align: middle;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
 /* Keep the Promissory Note text readable */
 .payment-table-card td:nth-child(7) {
-  vertical-align: middle;
   padding-top: 8px;
   padding-bottom: 8px;
 }

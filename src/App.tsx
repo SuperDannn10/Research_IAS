@@ -230,10 +230,13 @@ const yearLevelOptions = [
 ];
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(() => {
+    return localStorage.getItem("loggedIn") === "true";
+  });
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [currentPage, setCurrentPage] =
-    useState("dashboard");
+  const [currentPage, setCurrentPage] = useState(() => {
+    return localStorage.getItem("currentPage") || "dashboard";
+  });
 
   const [students, setStudents] = useState<Student[]>(() => {
     try {
@@ -288,6 +291,10 @@ function App() {
     );
   }, [payments]);
 
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+  }, [currentPage]);
+
   const openPage = (page: string) => {
     setCurrentPage(page);
     setSidebarOpen(false);
@@ -298,12 +305,15 @@ function App() {
 
   const handleLogin = () => {
     setLoggedIn(true);
+    localStorage.setItem("loggedIn", "true");
     setSidebarOpen(false);
     setCurrentPage("dashboard");
   };
 
   const handleLogout = () => {
     setLoggedIn(false);
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("currentPage");
     setSidebarOpen(false);
   };
 
@@ -311,6 +321,19 @@ function App() {
     setStudents((prev) => [...prev, student]);
 
     setShowAddStudent(false);
+    setCurrentPage("student-directory");
+  };
+
+  const deleteStudent = (studentId: string) => {
+    setStudents((prev) =>
+      prev.filter((student) => student.id !== studentId),
+    );
+
+    setPayments((prev) =>
+      prev.filter((payment) => payment.studentId !== studentId),
+    );
+
+    setSelectedStudent(null);
     setCurrentPage("student-directory");
   };
 
@@ -591,6 +614,7 @@ function App() {
                   "student-directory",
                 )
               }
+              onDelete={deleteStudent}
             />
           )}
 
@@ -1628,10 +1652,12 @@ function StudentDetails({
   student,
   payment,
   onBack,
+  onDelete,
 }: {
   student: Student;
   payment?: Payment;
   onBack: () => void;
+  onDelete: (studentId: string) => void;
 }) {
   return (
     <main className="content-area">
@@ -1798,13 +1824,38 @@ function StudentDetails({
           )}
         </div>
 
-        <button
-          className="back-button"
-          onClick={onBack}
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+            flexWrap: "wrap",
+          }}
         >
-          <ArrowLeft size={19} />
-          Back
-        </button>
+          <button
+            className="back-button"
+            onClick={onBack}
+          >
+            <ArrowLeft size={19} />
+            Back
+          </button>
+
+          <button
+            className="back-button"
+            type="button"
+            onClick={() => {
+              const confirmed = window.confirm(
+                `Delete ${student.firstName} ${student.lastName}?`,
+              );
+
+              if (confirmed) {
+                onDelete(student.id);
+              }
+            }}
+          >
+            <CircleX size={19} />
+            Delete Student
+          </button>
+        </div>
       </div>
     </main>
   );
