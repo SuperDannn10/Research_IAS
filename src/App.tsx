@@ -1851,6 +1851,7 @@ function StudentDetails({
           <button
             className="back-button"
             type="button"
+            aria-label={`Delete ${student.firstName} ${student.lastName}`}
             onClick={() => {
               const confirmed = window.confirm(
                 `Delete ${student.firstName} ${student.lastName}?`,
