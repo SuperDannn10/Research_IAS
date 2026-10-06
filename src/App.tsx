@@ -361,6 +361,7 @@ function App() {
     });
 
     setShowRecordPayment(false);
+    setCurrentPage("payment-information");
   };
 
   if (!loggedIn) {
