@@ -743,6 +743,14 @@ tbody tr:last-child td {
   padding-right: 14px;
 }
 
+.payment-table-card tbody tr {
+  transition: background-color 160ms ease;
+}
+
+.payment-table-card tbody tr:hover {
+  background: #f7fbff;
+}
+
 /* Keep the Promissory Note text readable */
 .payment-table-card td:nth-child(7) {
   padding-top: 8px;
