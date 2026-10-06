@@ -1198,6 +1198,14 @@ tbody tr:last-child td {
   justify-content: center;
   gap: 8px;
   font-size: 23px;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.login-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
 .sidebar-overlay {
