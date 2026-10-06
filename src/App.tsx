@@ -322,6 +322,7 @@ function App() {
   const addStudent = (student: NewStudent) => {
     setStudents((prev) => [...prev, student]);
 
+    setSelectedStudent(null);
     setShowAddStudent(false);
     setCurrentPage("student-directory");
   };
